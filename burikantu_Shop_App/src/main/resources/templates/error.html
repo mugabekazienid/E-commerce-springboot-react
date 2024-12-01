@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error Page</title>
+    <style>
+        /* Background gradient */
+        body {
+            background: linear-gradient(135deg, #FF6B6B, #FFD93D);
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            animation: background-pulse 5s infinite alternate;
+        }
+        @keyframes background-pulse {
+            0% { background: linear-gradient(135deg, #FF6B6B, #FFD93D); }
+            100% { background: linear-gradient(135deg, #FFD93D, #FF6B6B); }
+        }
+
+        /* Error box styling */
+        .error-container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            animation: slideIn 1.5s ease;
+        }
+        @keyframes slideIn {
+            0% { transform: translateY(-100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Heading and paragraph styling */
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            color: #FFD93D;
+        }
+        p {
+            font-size: 1.2em;
+            color: #FFEB3B;
+            margin: 10px 0;
+        }
+        .error-details {
+            color: #FFCDD2;
+            font-size: 1em;
+        }
+
+        /* Return button styling */
+        .home-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #FF6B6B;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(255, 107, 107, 0.3);
+        }
+        .home-link:hover {
+            background-color: #FF5252;
+            box-shadow: 0px 6px 15px rgba(255, 82, 82, 0.5);
+        }
+    </style>
+</head>
+<body>
+<div class="error-container">
+    <h1>An Error Has Occurred</h1>
+    <p th:text="${exceptionDetails != null ? exceptionDetails.message : 'An unexpected error occurred.'}"></p>
+    <p th:if="${exceptionDetails != null}" class="error-details">
+        Exception Type: <span th:text="${exceptionDetails.class.name}"></span>
+    </p>
+    <p th:if="${exceptionDetails != null}" class="error-details">
+        Error Details: <span th:text="${exceptionDetails.localizedMessage}"></span>
+    </p>
+    <a href="/" class="home-link">Return to Home</a>
+</div>
+</body>
+</html>

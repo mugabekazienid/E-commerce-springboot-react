@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" type="image/svg+xml">
+    <title>React App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            background-color: #D5DEEF;
+        }
+        .navbar-brand img {
+            height: 60px;
+        }
+        .hero {
+            padding: 60px;
+        }
+        .hero h1 {
+            font-size: 3em;
+            /*font-weight: bold;*/
+            color: #007bff;
+        }
+        .hero p {
+            font-size: 1.2em;
+            color: #6c757d;
+            margin: 20px 0;
+        }
+        .hero .btn {
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1em;
+            padding: 10px 20px;
+            border: none;
+        }
+        .hero .btn:hover {
+            background-color: #D5DEEF;
+        }
+        .nav-link {
+            color: #003554;
+            font-weight: bold;
+        }
+        .nav-link:hover {
+            color: #006DA4;
+        }
+        .content-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 0;
+        }
+        .content-wrapper .image-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .content-wrapper .image-section img {
+            max-width: 100%;
+            height: auto;
+        }
+        .content-wrapper .text-section {
+            flex: 1;
+        }
+    </style>
+<!--    <title>Online Shopping</title>-->
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img th:src="@{/images/logo2.jpg}" src="../static/images/logo2.jpg" alt="Logo"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/}" href="#">home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/shop}" href="#">shop</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/admin}" href="#">admin</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">login</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/orderHistory}" href="#">Orders</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/cart}" href="#">cart</a>
+                </li>
+                <li class="nav-item active">
+                    <span class="nav-link" th:text="${cartCount}">0</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Content Wrapper with Carousel -->
+<div class="content-wrapper">
+    <div class="image-section">
+        <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel" data-interval="4000">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators1" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" th:src="@{/imageProduct/dd(1).jpeg}" src="../static/imageProduct/dd(1).jpeg" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" th:src="@{/imageProduct/dd(2).jpeg}" src="../static/imageProduct/dd(2).jpeg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" th:src="@{/imageProduct/dd.jpeg}" src="../static/imageProduct/dd.jpeg" alt="Third slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" th:src="@{/imageProduct/download (2).jpeg}" src="../static/imageProduct/download (2).jpeg" alt="Fourth slide">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-section hero">
+        <div>
+            <h1>Perfumes of all kinds for you</h1>
+            <p>Discover our exquisite range of perfumes, crafted to perfection. Elevate your senses with enchanting fragrances that captivate and leave a lasting impression. Experience luxury in every spritz..</p>
+
+        </div>
+    </div>
+</div>
+
+<!-- Duplicate the above Content Wrapper for additional sections -->
+<div class="content-wrapper">
+    <div class="text-section hero">
+        <div>
+            <h1>We Got clasic watch for you</h1>
+
+            <p>Lorem ipsum dolor sit amet, sea putant suscipit invidunt cu. Nonumy scripserit id per. Cu quis theophrastus reprehendunt nec. Vero invidunt splendide te vim, cu mea nulla voluptaria. Lorem consequat adversarium vel an.</p>
+
+        </div>
+    </div>
+    <div class="image-section">
+        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel" data-interval="4000">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators2" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" th:src="@{/imageProduct/download (10).jpeg}" src="../static/imageProduct/download (10).jpeg" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" th:src="@{/imageProduct/images (12).jpeg}" src="../static/imageProduct/images (12).jpeg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" th:src="@{/imageProduct/download (7).jpeg}" src="../static/imageProduct/download (7).jpeg" alt="Third slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" th:src="@{/imageProduct/download (8).jpeg}" src="../static/imageProduct/download (8).jpeg" alt="Fourth slide">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add more content wrappers as needed -->
+<!-- Content Wrapper with Carousel -->
+<div class="content-wrapper">
+    <div class="image-section">
+        <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel" data-interval="4000">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators1" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" th:src="@{/imageProduct/images (1).jpeg}" src="../static/imageProduct/images (1).jpeg" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" th:src="@{/imageProduct/images (6).jpeg}" src="../static/imageProduct/images (6).jpeg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" th:src="@{/imageProduct/images (3).jpeg}" src="../static/imageProduct/images (3).jpeg" alt="Third slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" th:src="@{/imageProduct/image.jpeg}" src="../static/imageProduct/image.jpeg" alt="Fourth slide">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-section hero">
+        <div>
+            <h1>We Got Jeans for you</h1>
+            <p>premium jeans collection! Crafted for comfort and style, our jeans offer a perfect fit and durable quality. Elevate your wardrobe with trendy designs and timeless classics. Shop now!</p>
+
+        </div>
+    </div>
+</div>
+
+<!-- Duplicate the above Content Wrapper for additional sections -->
+<div class="content-wrapper">
+    <div class="text-section hero">
+        <div>
+            <h1>Shirts that fits well the body</h1>
+            <p>Upgrade your wardrobe with our premium collection of shirts! Unmatched comfort, stylish designs, and top-notch quality. Perfect for any occasion. Shop now and experience the difference in style.</p>
+
+        </div>
+    </div>
+    <div class="image-section">
+        <div id="carouselExampleIndicators4" class="carousel slide" data-ride="carousel" data-interval="4000">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators2" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" th:src="@{/imageProduct/download.jpeg}" src="../static/imageProduct/download.jpeg" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" th:src="@{/imageProduct/ima.jpeg}" src="../static/imageProduct/ima.jpeg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" th:src="@{/imageProduct/images (7).jpeg}" src="../static/imageProduct/images (7).jpeg" alt="Third slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" th:src="@{/imageProduct/images.jpeg}" src="../static/imageProduct/images.jpeg" alt="Fourth slide">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Content Wrapper with Carousel -->
+<div class="content-wrapper">
+    <div class="image-section">
+        <div id="carouselExampleIndicators5" class="carousel slide" data-ride="carousel" data-interval="4000">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators1" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" th:src="@{/imageProduct/download (4).jpeg}" src="../static/imageProduct/download (4).jpeg" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" th:src="@{/imageProduct/download (9).jpeg}" src="../static/imageProduct/download (9).jpeg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" th:src="@{/imageProduct/download.jpeg}" src="../static/imageProduct/download.jpeg" alt="Third slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" th:src="@{/imageProduct/images (2).jpeg}" src="../static/imageProduct/images (2).jpeg" alt="Fourth slide">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-section hero">
+        <div>
+            <h1>SHOP WITH US</h1>
+            <p>premium jeans collection! Crafted for comfort and style, our jeans offer a perfect fit and durable quality. Elevate your wardrobe with trendy designs and timeless classics. Shop now!
+                Upgrade your wardrobe with our premium collection of shirts! Unmatched comfort, stylish designs, and top-notch quality. Perfect for any occasion. Shop now and experience the difference in style.
+
+                premium jeans collection! Crafted for comfort and style, our jeans offer a perfect fit and durable quality. Elevate your wardrobe with trendy designs and timeless classics. Shop now!
+
+                Discover our exquisite range of perfumes, crafted to perfection. Elevate your senses with enchanting fragrances that captivate and leave a lasting impression. Experience luxury in every spritz.</p>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
