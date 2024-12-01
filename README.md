@@ -20,4 +20,75 @@
 ![Screenshot (8030)](https://github.com/user-attachments/assets/153e1450-6cf2-4ed0-b8cc-0670d2677b06)
 ![Screenshot (8029)](https://github.com/user-attachments/assets/84beb787-ec54-4ca0-b169-f90205bed057)
 # E-commerce-springboot-react
-The project is about ecommerce with spring boot for backend and  react for frontend and postgres for database
+Project Overview
+
+Burikantu Shop App is an e-commerce web application built with **Spring Boot** (backend) and **React** (frontend). This project is designed to help users browse, manage, and purchase products in an easy and intuitive way. The app supports user authentication, product catalog management, and order placement.
+
+## Technologies Used
+
+  - 'Backend': Spring Boot
+  - Java-based framework to handle server-side logic.
+  - PostgreSQL database for storing user and product data.
+  - Spring Data JPA for database interactions.
+  - Spring Security for user authentication.
+  
+- 'Frontend': React
+  - Provides a user-friendly interface for browsing products and managing the shopping cart.
+  - React Router for page navigation.
+
+- 'Database': PostgreSQL
+  - Stores user information, product details, orders, and payment data.
+  
+---
+
+## Business Overview
+
+The Burikantu Shop App is designed to provide a seamless online shopping experience. The primary business objectives of this application are:
+
+1. Product Browsing: Users can view products, search for specific items, and explore categories.
+2. User Management: Customers can create accounts, sign in, and manage their profiles.
+3. Order Management: Once users select products, they can place orders and track their status.
+4. Security: User credentials are safely stored and authenticated using Spring Security.
+5. Admin Management: Admins have the ability to manage users and products, ensuring the catalog stays up-to-date.
+
+---
+
+## Features
+
+- User Authentication:
+  - Sign Up: New users can register by providing their name, email, and password.
+  - Sign In: Registered users can log in using their email and password.
+  
+- Product Management:
+  - View product details (description, price, and availability).
+  - Search for products by name or category.
+  
+- Order and Cart:
+  - Users can add products to their shopping cart.
+  - Place an order and manage cart items.
+
+- Admin Features:
+  - Admins can manage users, products, and orders from the admin dashboard.
+
+---
+
+
+
+## Sign Up and Sign In Guide
+
+### 1. Sign Up (Create an Account)
+
+1. Navigate to the "Sign Up" page from the homepage or login screen.
+2. Fill in your "name", "email address", and "password".
+3. Click on "Sign Up" to create your account.
+4. Upon successful registration, you will be redirected to the login page.
+
+### 2. Sign In (Log In to Your Account)
+
+1. Navigate to the "Sign In" page.
+2. Enter your "email address" and "password".
+3. Click on "Sign In" to log into your account.
+4. Once logged in, you can view and manage your orders, and browse the products.
+
+   
+
